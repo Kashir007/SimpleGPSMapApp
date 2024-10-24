@@ -48,9 +48,12 @@ Esto podría llevar a la exposición de datos críticos de la aplicación.
 -**Remediación:**: Deshabilitar la opción de copia de seguridad configurando el 
 atributo android:allowBackup a false en el archivo AndroidManifest.xml
 
-###4. 
--**Descripción:** 
--**Severidad:** 
--**Impacto:** 
+###4. Receptor de broadcast expuesto con nivel de protección no verificado
+-**Descripción:** e encontró un Broadcast Receiver que se comparte con otras aplicaciones en el dispositivo, lo que lo deja accesible a cualquier otra aplicación. Está protegido por un permiso, pero este permiso no está definido en la aplicación analizada. Por lo tanto, el nivel de protección del permiso debe ser verificado donde esté definido. Si el nivel de protección está configurado como "normal" o "peligroso", una aplicación maliciosa podría solicitar e interactuar con el componente. Si está configurado como "signature", solo las aplicaciones firmadas con el mismo certificado podrán obtener el permiso.
+-**Severidad:** Advertencia
+-**Impacto:** Un atacante podría explotar esta vulnerabilidad para acceder o interactuar con el receptor de broadcast, lo que puede permitir la manipulación o abuso de las funcionalidades compartidas con otras aplicaciones.
 -**Pasos para reproducir:** 
--**Remediación:**:
+-Revisar el archivo AndroidManifest.xml de la aplicación.
+-Verificar que el receptor androidx.profileinstaller.ProfileInstallReceiver esté marcado como android:exported=true.
+-Comprobar que el permiso android.permission.DUMP no esté definido correctamente.
+-**Remediación:**:Asegurarse de que el permiso esté definido correctamente y verificar el nivel de protección del permiso. Configurarlo como signature si es necesario, para limitar el acceso a aplicaciones firmadas con el mismo certificado.
