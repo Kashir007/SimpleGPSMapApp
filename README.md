@@ -5,9 +5,10 @@
 Este proyecto es una aplicación Android que sirve para poder ubicarnos en el mapa, usando la API de GoogleMaps.
 
 ## Vulnerabilidades Identificadas
-- **Inyección SQL**: Riesgo de ejecución de comandos SQL maliciosos.
-- **Comunicación no segura**: Posibilidad de interceptación de datos durante la transmisión.
-- **Exposición de datos sensibles**: Riesgo de acceso no autorizado a información privada.
+**Vulnerabilidad por versión antigua**
+**Depuración habilitada para la aplicación**  
+**Permiso para hacer copia de seguridad de los datos de la aplicación**  
+**Receptor de broadcast expuesto con nivel de protección no verificado** 
 
 ## Mejoras Implementadas
 - **Cifrado de datos sensibles**: Se implementa cifrado robusto para proteger la información crítica.
